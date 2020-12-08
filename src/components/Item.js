@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import {
   Card,
   CardImg,
@@ -6,9 +6,24 @@ import {
   CardBody,
   Button,
   CardHeader,
+  Row,
+  Col,
 } from "reactstrap";
+import ItemCount from "components/ItemCount";
+import Carrito from "context/CartContext";
 
-const Item = ({ title, img, alt, precio, stock }) => {
+const Item = ({ id, title, img, alt, precio, stock }) => {
+  const [count, setCount] = useState(0);
+  const [{ addToCart }] = useContext(Carrito);
+
+  const cartItem = {
+    count,
+    id,
+    title,
+    img,
+    precio,
+  };
+
   return (
     <>
       <Card style={{ marginBottom: "2rem" }} className="border-secondary mb-2">
@@ -16,7 +31,8 @@ const Item = ({ title, img, alt, precio, stock }) => {
         <CardHeader tag="h5">{title} </CardHeader>
         <CardBody>
           <CardText>Precio por kilo: ${precio}</CardText>
-          <Button color="secondary">Button</Button>
+
+          <Button color="secondary">Comprar</Button>
         </CardBody>
       </Card>
     </>

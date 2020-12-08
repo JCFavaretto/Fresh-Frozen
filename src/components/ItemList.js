@@ -8,9 +8,11 @@ function ItemList() {
     <div className="mt-5">
       <Row sm="2" md="3" lg="4">
         {items.map((item) => {
+          console.log(item);
           return (
-            <Col>
+            <Col key={item.id}>
               <Item
+                id={item.id}
                 title={item.nombre}
                 img={item.img}
                 alt={item.alt}

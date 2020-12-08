@@ -6,7 +6,7 @@ export const items = [
       "https://firebasestorage.googleapis.com/v0/b/fresh-and-frozen-c300d.appspot.com/o/filet%20de%20merluza.jpg?alt=media&token=ff098290-6abf-4bdf-9e4a-e856de588e5b",
     alt: "fILET DE MERLUZA SIN ESPINAS",
     precio: 499,
-    stock: true,
+    stock: 10,
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ export const items = [
       "https://firebasestorage.googleapis.com/v0/b/fresh-and-frozen-c300d.appspot.com/o/kanikama.jpg?alt=media&token=35a24004-2b9c-4482-b839-b6f67def54f0",
     alt: "BASTONES DE SURIMI (TIPO KANIKAMA)",
     precio: 680,
-    stock: true,
+    stock: 10,
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ export const items = [
       "https://firebasestorage.googleapis.com/v0/b/fresh-and-frozen-c300d.appspot.com/o/cola%20langostino.jpg?alt=media&token=bd5622dc-7a50-4149-af7e-0e63aa1a89cf",
     alt: "COLA DE LANGOSTINO PREMIUN",
     precio: 1800,
-    stock: true,
+    stock: 10,
   },
   {
     id: 4,
@@ -34,7 +34,7 @@ export const items = [
     alt:
       "RABAS (ANILLAS DE TUBO DE CALAMAR) REBOZADOS PREFRITAS LISTAS PARA FREIR U HORNEAR",
     precio: 1699,
-    stock: true,
+    stock: 10,
   },
   {
     id: 5,
@@ -43,7 +43,7 @@ export const items = [
       "https://firebasestorage.googleapis.com/v0/b/fresh-and-frozen-c300d.appspot.com/o/langostinos%20pelados.jpg?alt=media&token=0f5508f8-17d5-42c4-b6a0-2330a556dc0f",
     alt: "Langostinos Pelados Crudos",
     precio: 1500,
-    stock: true,
+    stock: 10,
   },
   {
     id: 6,
@@ -52,7 +52,7 @@ export const items = [
       "https://firebasestorage.googleapis.com/v0/b/fresh-and-frozen-c300d.appspot.com/o/salmon%20rosado%20en%20penca.jpg?alt=media&token=33da77b9-ae45-4dc9-9919-251382de34a4",
     alt: "FILET DE SALMON ROSADO CON PIEL",
     precio: 1900,
-    stock: true,
+    stock: 10,
   },
   {
     id: 7,
@@ -61,7 +61,7 @@ export const items = [
       "https://firebasestorage.googleapis.com/v0/b/fresh-and-frozen-c300d.appspot.com/o/anillas%20de%20calamar.jpg?alt=media&token=28caba59-0a35-48ce-9080-29f4cd0844a7",
     alt: "ANILLAS DE CALAMAR CORTADAS, TIERNIZADAS Y CONGELADAS",
     precio: 1100,
-    stock: true,
+    stock: 10,
   },
   {
     id: 8,
@@ -70,6 +70,6 @@ export const items = [
       "https://firebasestorage.googleapis.com/v0/b/fresh-and-frozen-c300d.appspot.com/o/mejillones%20pelados.jpg?alt=media&token=15e94fd7-8cb3-4b4c-9b6c-a0cd0c956a68",
     alt: "MEJILLONES PELADOS SEMICOCIDOS ",
     precio: 680,
-    stock: true,
+    stock: 10,
   },
 ];

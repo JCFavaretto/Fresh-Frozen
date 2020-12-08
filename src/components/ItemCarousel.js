@@ -55,6 +55,7 @@ const ItemCarousel = () => {
               style={{ marginRight: "10px" }}
             >
               <Item
+                id={item.id}
                 title={item.nombre}
                 img={item.img}
                 alt={item.alt}

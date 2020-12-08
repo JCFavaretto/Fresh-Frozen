@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   Collapse,
   Navbar,
@@ -15,6 +15,7 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import Cart from "components/Cart.js";
+import Carrito from "context/CartContext";
 
 const Header = () => {
   const [collapsed, setCollapsed] = useState(true);
@@ -25,6 +26,17 @@ const Header = () => {
 
   const toggleModal = () => setModal(!modal);
 
+  const [cantidad, setCantidad] = useState(0);
+  const [{ cart, calcularCantidad }] = useContext(Carrito);
+
+  useEffect(
+    () => {
+      setCantidad(() => calcularCantidad());
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [cart]
+  );
+
   return (
     <Navbar color="primary" dark expand="md" fixed="top">
       <Container>
@@ -32,9 +44,12 @@ const Header = () => {
           Fresh&Frozen
         </NavbarBrand>
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />{" "}
-        <i className="material-icons cart-icon" onClick={toggleModal}>
-          shopping_cart
-        </i>
+        <NavItem className="cart-icon">
+          <i className="material-icons " onClick={toggleModal}>
+            shopping_cart
+          </i>
+          <span> {cantidad > 0 && cantidad} </span>
+        </NavItem>
         <Cart modal={modal} toggleModal={toggleModal} />
         <Collapse isOpen={!collapsed} navbar>
           <Nav navbar className="ml-5">

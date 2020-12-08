@@ -23,7 +23,6 @@ const Header = () => {
   const toggleNavbar = () => setCollapsed(!collapsed);
 
   const [modal, setModal] = useState(false);
-
   const toggleModal = () => setModal(!modal);
 
   const [cantidad, setCantidad] = useState(0);

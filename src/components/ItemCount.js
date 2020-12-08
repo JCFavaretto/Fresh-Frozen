@@ -27,9 +27,13 @@ function ItemCount({ count, setCount, max }) {
         alignItems: "center",
         textAlign: "center",
         padding: "0",
+        flexGrow: "0",
       }}
     >
-      <Button style={{ padding: "0.2rem 0.5rem" }} onClick={restar}>
+      <Button
+        style={{ padding: "0.2rem 0.5rem", borderRadius: "0" }}
+        onClick={restar}
+      >
         -
       </Button>
       <p
@@ -37,12 +41,16 @@ function ItemCount({ count, setCount, max }) {
           marginTop: "1rem",
           padding: "0.3rem 0.4rem",
           border: "1px solid var(--secondary)",
-          borderRadius: "20%",
+          borderRadius: "0",
+          width: "50px",
         }}
       >
         {count}
       </p>
-      <Button style={{ padding: "0.2rem 0.5rem" }} onClick={sumar}>
+      <Button
+        style={{ padding: "0.2rem 0.5rem", borderRadius: "0" }}
+        onClick={sumar}
+      >
         +
       </Button>
     </Col>

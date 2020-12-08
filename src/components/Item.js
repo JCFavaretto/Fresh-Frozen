@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardImg,
@@ -6,15 +6,11 @@ import {
   CardBody,
   Button,
   CardHeader,
-  Row,
-  Col,
 } from "reactstrap";
-import ItemCount from "components/ItemCount";
-import Carrito from "context/CartContext";
+import ItemDetail from "components/ItemDetail";
 
 const Item = ({ id, title, img, alt, precio, stock }) => {
   const [count, setCount] = useState(0);
-  const [{ addToCart }] = useContext(Carrito);
 
   const cartItem = {
     count,
@@ -24,6 +20,9 @@ const Item = ({ id, title, img, alt, precio, stock }) => {
     precio,
   };
 
+  const [modal2, setModal] = useState(false);
+  const toggleModal = () => setModal(!modal2);
+
   return (
     <>
       <Card style={{ marginBottom: "2rem" }} className="border-secondary mb-2">
@@ -32,7 +31,17 @@ const Item = ({ id, title, img, alt, precio, stock }) => {
         <CardBody>
           <CardText>Precio por kilo: ${precio}</CardText>
 
-          <Button color="secondary">Comprar</Button>
+          <Button color="secondary" onClick={toggleModal}>
+            Comprar
+          </Button>
+          <ItemDetail
+            alt={alt}
+            modal={modal2}
+            toggleModal={toggleModal}
+            cartItem={cartItem}
+            setCount={setCount}
+            stock={stock}
+          />
         </CardBody>
       </Card>
     </>

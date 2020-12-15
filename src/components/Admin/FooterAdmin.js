@@ -1,14 +1,16 @@
 import React from "react";
-import { Col, Container, Row } from "reactstrap";
+import { Button, Col, Container, Row } from "reactstrap";
 
 function FooterAdmin() {
   return (
     <div className="footer footer-admin">
       <Container>
-        <Row xs="1" md="3">
-          <Col>Nosotros</Col>
-          <Col>Navegacion</Col>
-          <Col>Nuestras Redes Sociales</Col>
+        <Row xs="1">
+          <Col>
+            <Button style={{ marginTop: "1rem" }} color="primary">
+              Cerrar Sesion
+            </Button>
+          </Col>
         </Row>
       </Container>
     </div>

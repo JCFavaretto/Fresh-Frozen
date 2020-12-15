@@ -2348,7 +2348,7 @@ pre code {
     background-color: #fff;
     border-color: #d0eae2;
     outline: 0;
-    box-shadow: 0 0 0 .2rem rgba(120, 194, 173, .25)
+    box-shadow: 0 0 0 .2rem var(--primary)
 }
 
 .form-control::-webkit-input-placeholder {
@@ -5843,17 +5843,17 @@ a.badge-dark:focus {
 }
 
 .alert-primary {
-    color: #3e655a;
+    color: var(--primary);
     background-color: #e4f3ef;
     border-color: #d9eee8
 }
 
 .alert-primary hr {
-    border-top-color: #c7e6dd
+    border-top-color: var(--primary)
 }
 
 .alert-primary .alert-link {
-    color: #2b453e
+    color: var(--primary)
 }
 
 .alert-secondary {
@@ -11247,12 +11247,12 @@ button.bg-dark:hover {
 }
 
 .text-primary {
-    color: #78c2ad !important
+    color: var(--primary) !important
 }
 
 a.text-primary:focus,
 a.text-primary:hover {
-    color: #4aa48a !important
+    color: var(--primary) !important
 }
 
 .text-secondary {
@@ -11690,7 +11690,7 @@ legend {
 .alert-primary,
 .alert-primary>td,
 .alert-primary>th {
-    background-color: #78c2ad
+    background-color: var(--primary)
 }
 
 .alert-secondary,

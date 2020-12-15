@@ -16,7 +16,7 @@ const HeaderAdmin = () => {
   const toggleNavbar = () => setCollapsed(!collapsed);
 
   return (
-    <Navbar color="info" light fixed="top">
+    <Navbar color="secondary" dark fixed="top">
       <Container>
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />
         <NavbarBrand href="/admin" className="mr-auto">

@@ -1,4 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import {
   Collapse,
   Navbar,
@@ -43,10 +45,8 @@ const Header = () => {
           Fresh&Frozen
         </NavbarBrand>
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />{" "}
-        <NavItem className="cart-icon">
-          <i className="material-icons " onClick={toggleModal}>
-            shopping_cart
-          </i>
+        <NavItem className="cart-icon" onClick={toggleModal}>
+          <FontAwesomeIcon icon={faShoppingCart} />
           <span> {cantidad > 0 && cantidad} </span>
         </NavItem>
         <Cart modal={modal} toggleModal={toggleModal} />

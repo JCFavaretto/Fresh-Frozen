@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 import {
   Button,
@@ -12,15 +14,17 @@ import {
 import Carrito from "context/CartContext";
 
 const Cart = ({ modal, toggleModal }) => {
-  const [{ cart, calcularCantidad, removeFromCart }] = useContext(Carrito);
+  const [{ cart, calcularCantidad, removeFromCart, totalGasto }] = useContext(
+    Carrito
+  );
 
   return (
     <div>
       <Modal isOpen={modal} toggle={toggleModal} className="jumbotron">
         <ModalHeader toggle={toggleModal}>Carrito</ModalHeader>
-        {calcularCantidad === 0 ? (
+        {calcularCantidad() === 0 ? (
           <ModalBody>
-            "El carrito esta vacio. Ir a"
+            El carrito esta vacio. Ir a
             <NavLink to="/products" onClick={toggleModal}>
               {" "}
               Productos
@@ -30,27 +34,43 @@ const Cart = ({ modal, toggleModal }) => {
           <ModalBody>
             {cart.map((item) => {
               return (
-                <Row>
-                  <Col xs="2">{item.count}</Col>
-                  <Col xs="8"> {item.title}</Col>
+                <Row key={item.id}>
+                  <Col xs="3">{item.count} kg.</Col>
+                  <Col xs="4"> {item.name}</Col>
+                  <Col xs="3">${item.price * item.count} </Col>
                   <Col xs="2">
-                    <i
-                      style={{ color: "var(--secondary-dark)" }}
-                      className="material-icons"
-                      onClick={() => removeFromCart(item.id)}
-                    >
-                      highlight_off
-                    </i>
+                    <FontAwesomeIcon
+                      style={{
+                        color: "var(--secondary-dark)",
+                        fontSize: "1.2  rem",
+                      }}
+                      onClick={() => {
+                        removeFromCart(item.id);
+                      }}
+                      className="hover-pointer"
+                      icon={faTrashAlt}
+                    />{" "}
                   </Col>
                 </Row>
               );
-            })}
+            })}{" "}
+            <p
+              style={{
+                textAlign: "end",
+                marginTop: "2rem",
+                color: "var(--secondary-dark)",
+              }}
+            >
+              TOTAL: ${totalGasto()}
+            </p>
           </ModalBody>
         )}
         <ModalFooter>
-          <Button color="primary" onClick={toggleModal}>
-            Comprar
-          </Button>
+          {calcularCantidad() !== 0 && (
+            <Button color="primary" onClick={toggleModal}>
+              Comprar
+            </Button>
+          )}
           <Button color="secondary" onClick={toggleModal}>
             Cerrar
           </Button>

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { db } from "Firebase.js";
+import React, { useEffect, useState } from "react";
+import { db } from "fire.js";
 import { useLocalCart } from "hooks/useLocalCart";
 
 const Carrito = React.createContext({});
@@ -8,13 +8,17 @@ export const CartProvider = ({ children }) => {
   const [storedValue, setValue, emptyStorage] = useLocalCart();
   const [cart, setCart] = useState(storedValue);
 
+  useEffect(() => {
+    setValue(cart);
+  }, [cart]); //eslint-disable-line
+
   function addToCart({ cartItem }) {
     let existe = false;
     if (cart.length > 0) {
       setCart(() => {
         const newCart = cart.map((item) => {
           if (item.id === cartItem.id) {
-            item.count = cartItem.count;
+            item.count = item.count + cartItem.count;
             if (item.count > item.stock) {
               item.count = item.stock;
             }
@@ -31,7 +35,6 @@ export const CartProvider = ({ children }) => {
       setCart(() => [...cart, cartItem]);
     }
     console.log(cart);
-    setValue(cart);
   }
 
   //Calcula la cantidad total de todos los items en el carrito
@@ -50,7 +53,7 @@ export const CartProvider = ({ children }) => {
     let count = 0;
     if (Array.isArray(cart)) {
       cart.forEach((item) => {
-        count = count + item.count * item.precio;
+        count = count + item.count * item.price;
         return count;
       });
     }
@@ -102,7 +105,6 @@ export const CartProvider = ({ children }) => {
   function removeFromCart(id) {
     const newCart = cart.filter((item) => item.id !== id);
     setCart(newCart);
-    setValue(newCart);
   }
 
   return (

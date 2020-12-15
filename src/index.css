@@ -5,6 +5,12 @@ body {
 
 }
 
+/* Utilities */
+.hover-pointer {
+  cursor: pointer;
+}
+
+
 /* Bootstrap styles */
 @media (min-width: 1200px) {
   .container {
@@ -86,7 +92,7 @@ body {
 
 /* components/Footer */
 .footer {
-  height: 5rem;
+  min-height: 5rem;
   background-color: var(--primary);
   color: white;
   text-align: center;
@@ -109,13 +115,8 @@ body {
 }
 
 
-/* AddItem */
-.icon-success {
-  color: var(--success);
-}
-
 /* Admin Footer */
 .footer-admin {
-  background-color: var(--info);
-  color: #5a5a5a;
+  background-color: var(--secondary);
+  color: var(--light);
 }

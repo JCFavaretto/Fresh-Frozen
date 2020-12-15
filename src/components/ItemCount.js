@@ -42,10 +42,10 @@ function ItemCount({ count, setCount, max }) {
           padding: "0.3rem 0.4rem",
           border: "1px solid var(--secondary)",
           borderRadius: "0",
-          width: "50px",
+          width: "75px",
         }}
       >
-        {count}
+        {count} kg.
       </p>
       <Button
         style={{ padding: "0.2rem 0.5rem", borderRadius: "0" }}

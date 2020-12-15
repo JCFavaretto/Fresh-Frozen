@@ -1,5 +1,6 @@
 import React from "react";
-import { items } from "assets/items";
+import { useGetFirestoreItems } from "hooks/useGetFirestoreItems";
+
 import {
   CarouselProvider,
   Slider,
@@ -9,10 +10,12 @@ import {
 } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import Item from "components/Item";
-import { Row, Col } from "reactstrap";
+import { Row, Col, Spinner } from "reactstrap";
 import useWindowDimensions from "hooks/useWindowDimensions";
 
 const ItemCarousel = () => {
+  const { loading, productos } = useGetFirestoreItems();
+
   const { width } = useWindowDimensions();
 
   const calculateSlides = () => {
@@ -36,46 +39,57 @@ const ItemCarousel = () => {
   };
 
   return (
-    <CarouselProvider
-      className="item-carousel"
-      naturalSlideWidth={1}
-      naturalSlideHeight={calculateHeight()}
-      totalSlides={items.length + 1}
-      visibleSlides={calculateSlides()}
-      infinite={true}
-      isPlaying={true}
-      interval={2500}
-    >
-      <Slider>
-        {items.map((item) => {
-          return (
-            <Slide
-              index={item.id}
-              key={item.id}
-              style={{ marginRight: "10px" }}
-            >
-              <Item
-                id={item.id}
-                title={item.nombre}
-                img={item.img}
-                alt={item.alt}
-                precio={item.precio}
-                stock={item.stock}
-              />
-            </Slide>
-          );
-        })}
-      </Slider>
-      <Row style={calculateSlides() === 1 ? { display: "none" } : {}}>
-        <Col xs="2">
-          <ButtonBack className="btn btn-secondary">Back</ButtonBack>
-        </Col>
-        <Col xs="8"></Col>
-        <Col xs="2">
-          <ButtonNext className="btn btn-secondary">Next</ButtonNext>
-        </Col>
-      </Row>
-    </CarouselProvider>
+    <div>
+      {loading ? (
+        <Spinner
+          style={{ margin: "0 auto", width: "4rem", height: "4rem" }}
+          type="grow"
+          color="secondary"
+        />
+      ) : (
+        <CarouselProvider
+          className="item-carousel"
+          naturalSlideWidth={1}
+          naturalSlideHeight={calculateHeight()}
+          totalSlides={productos.length + 1}
+          visibleSlides={calculateSlides()}
+          infinite={true}
+          isPlaying={true}
+          interval={2500}
+        >
+          <Slider>
+            {Array.isArray(productos) &&
+              productos.map((item) => {
+                return (
+                  <Slide
+                    index={item.id}
+                    key={item.id}
+                    style={{ marginRight: "10px" }}
+                  >
+                    <Item
+                      id={item.id}
+                      name={item.name}
+                      img={item.img}
+                      alt={item.alt}
+                      price={item.price}
+                      stock={item.stock}
+                    />
+                  </Slide>
+                );
+              })}
+          </Slider>
+          <Row style={calculateSlides() === 1 ? { display: "none" } : {}}>
+            <Col xs="2">
+              <ButtonBack className="btn btn-secondary">Back</ButtonBack>
+            </Col>
+            <Col xs="8"></Col>
+            <Col xs="2">
+              <ButtonNext className="btn btn-secondary">Next</ButtonNext>
+            </Col>
+          </Row>
+        </CarouselProvider>
+      )}
+    </div>
   );
 };
 

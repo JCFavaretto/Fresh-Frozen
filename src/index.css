@@ -114,6 +114,12 @@ body {
   height: calc(100vh);
 }
 
+/* Admin login */
+
+.reg:hover {
+  cursor: pointer;
+  color: var(--primary);
+}
 
 /* Admin Footer */
 .footer-admin {

@@ -28,6 +28,15 @@ const HeaderAdmin = () => {
               <NavLink href="/admin/additem" onClick={toggleNavbar}>
                 Agregar producto nuevo
               </NavLink>
+              <NavLink href="/admin/items" onClick={toggleNavbar}>
+                Ver los productos
+              </NavLink>
+              <NavLink href="/admin/banners" onClick={toggleNavbar}>
+                Imagenes Banner
+              </NavLink>
+              <NavLink href="/admin/banners" onClick={toggleNavbar}>
+                Ver administradores
+              </NavLink>
             </NavItem>
           </Nav>
         </Collapse>

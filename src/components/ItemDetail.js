@@ -27,6 +27,7 @@ const ItemDetail = ({ alt, modal, toggleModal, count, setCount, cartItem }) => {
             max={cartItem.stock}
           />
           <Button
+            style={{ minWidth: "100px" }}
             color="secondary"
             onClick={() => add()}
             disabled={count === 0}

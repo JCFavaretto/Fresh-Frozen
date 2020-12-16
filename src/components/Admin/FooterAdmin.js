@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Col, Container, Row } from "reactstrap";
+import { fb } from "fire";
 
 function FooterAdmin() {
   return (
@@ -7,7 +8,13 @@ function FooterAdmin() {
       <Container>
         <Row xs="1">
           <Col>
-            <Button style={{ marginTop: "1rem" }} color="primary">
+            <Button
+              style={{ marginTop: "1rem" }}
+              color="primary"
+              onClick={() => {
+                fb.auth().signOut();
+              }}
+            >
               Cerrar Sesion
             </Button>
           </Col>

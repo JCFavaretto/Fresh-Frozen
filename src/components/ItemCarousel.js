@@ -1,5 +1,5 @@
 import React from "react";
-import { useGetFirestoreItems } from "hooks/useGetFirestoreItems";
+import { useGetFirestore } from "hooks/useGetFirestore";
 
 import {
   CarouselProvider,
@@ -14,7 +14,7 @@ import { Row, Col, Spinner } from "reactstrap";
 import useWindowDimensions from "hooks/useWindowDimensions";
 
 const ItemCarousel = () => {
-  const { loading, productos } = useGetFirestoreItems();
+  const { loading, productos } = useGetFirestore();
 
   const { width } = useWindowDimensions();
 

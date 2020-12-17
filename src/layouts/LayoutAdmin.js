@@ -9,7 +9,6 @@ import AuthContext from "context/AuthContext";
 
 function LayoutAdmin({ routes }) {
   const [{ user, loading }] = useContext(AuthContext);
-  console.log(user);
   if (!loading) {
     if (!user.loggedIn) {
       return (
@@ -23,7 +22,7 @@ function LayoutAdmin({ routes }) {
         <div>
           <HeaderAdmin />
           {user.isAuthorized ? (
-            <Container className="content">
+            <Container fluid className="content">
               <Row>
                 <Col>
                   <LoadRouters routes={routes} />

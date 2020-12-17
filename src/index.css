@@ -5,10 +5,21 @@ body {
 
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 /* Utilities */
 .hover-pointer {
   cursor: pointer;
 }
+
+.separador {
+  border-bottom: 1px solid var(--secondary);
+  padding-bottom: 0.5rem;
+  margin-bottom: 2rem;
+}
+
 
 
 /* Bootstrap styles */
@@ -112,6 +123,27 @@ body {
   background-color: var(--primary);
   min-width: 25%;
   height: calc(100vh);
+}
+
+/* Admin Home */
+.panel-control {
+  min-height: 4rem;
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.6rem;
+  border: 1px solid var(--secondary);
+  border-left: 2px solid var(--secondary);
+  border-right: 2px solid var(--secondary);
+  background-color: var(--primary);
+  color: var(--light)
+}
+
+
+
+.panel-control:hover {
+  background-color: var(--secondary);
+  border-color: var(--primary);
+  color: var(--dark);
 }
 
 /* Admin login */

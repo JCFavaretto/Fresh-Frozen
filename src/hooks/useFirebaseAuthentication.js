@@ -10,7 +10,6 @@ const useFirebaseAuthentication = () => {
     const unlisten = fb.auth().onAuthStateChanged((authUser) => {
       if (authUser) {
         const { uid } = authUser;
-        console.log(authUser);
         const loggedIn = true;
         const userCollection = db.collection("users");
         const data = userCollection.doc(uid);

@@ -4,7 +4,9 @@ import LayoutBasic from "layouts/LayoutBasic";
 
 // Admin Pages
 import HomeAdmin from "pages/Admin/HomeAdmin";
+import ItemsAdmin from "pages/Admin/ItemsAdmin";
 import AddItem from "pages/Admin/AddItem";
+import EditItem from "pages/Admin/EditItem";
 
 // Pages
 import Home from "pages/Home";
@@ -25,6 +27,16 @@ const routes = [
       {
         path: "/admin/additem",
         component: AddItem,
+        exact: true,
+      },
+      {
+        path: "/admin/items/:id",
+        component: EditItem,
+        exact: true,
+      },
+      {
+        path: "/admin/items",
+        component: ItemsAdmin,
         exact: true,
       },
       {

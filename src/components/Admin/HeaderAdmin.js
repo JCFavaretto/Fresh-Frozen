@@ -34,7 +34,7 @@ const HeaderAdmin = () => {
               <NavLink href="/admin/banners" onClick={toggleNavbar}>
                 Imagenes Banner
               </NavLink>
-              <NavLink href="/admin/banners" onClick={toggleNavbar}>
+              <NavLink href="/admin/admins" onClick={toggleNavbar}>
                 Ver administradores
               </NavLink>
             </NavItem>

@@ -4,13 +4,6 @@ import ItemForm from "components/Admin/ItemForm";
 import { db, storage } from "fire.js";
 import { Alert, Jumbotron, Spinner } from "reactstrap";
 
-const separador = {
-  borderBottom: "1px solid var(--secondary)",
-  widht: "90px",
-  paddingBottom: "0.5rem",
-  marginBottom: "2rem",
-};
-
 const AddItem = () => {
   const [alert, setAlert] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -85,7 +78,7 @@ const AddItem = () => {
           color="primary"
         />
       )}
-      <h3 style={separador}>Agregar nuevo producto</h3>
+      <h3 className="separador">Agregar nuevo producto</h3>
       <ItemForm addItem={addItem} />
     </Jumbotron>
   );

@@ -8,6 +8,7 @@ import {
   Jumbotron,
 } from "reactstrap";
 import { fb, db } from "fire";
+
 import { useHistory } from "react-router-dom";
 
 const LoginAdmin = () => {
@@ -30,6 +31,7 @@ const LoginAdmin = () => {
             db.collection("users").doc(cred.user.uid).set({
               isAuthorized: false,
               Email: mail,
+              date: new Date(),
             });
           })
           .then(() => {
@@ -46,7 +48,6 @@ const LoginAdmin = () => {
         fb.auth()
           .signInWithEmailAndPassword(mail, password)
           .then(({ user }) => {
-            console.log(user);
             setSuccess("Iniciando Sesión");
           })
           .then(() => {

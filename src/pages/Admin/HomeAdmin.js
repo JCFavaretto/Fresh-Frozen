@@ -16,7 +16,7 @@ function HomeAdmin() {
         <NavLink to="/admin/banners">
           <Col className="panel-control">Imagenes Banner</Col>
         </NavLink>
-        <NavLink to="/admin/banners">
+        <NavLink to="/admin/admins">
           <Col className="panel-control">Ver administradores</Col>
         </NavLink>
       </Row>

@@ -27,6 +27,7 @@ const AddItem = () => {
             db.collection("items").doc().set({
               name: item.name,
               alt: item.alt,
+              storage: item.name,
               img: url,
               price: item.price,
               stock: item.stock,

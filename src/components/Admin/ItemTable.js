@@ -23,6 +23,9 @@ function ItemTable() {
         })
         .catch((err) => {
           console.log(err);
+        })
+        .finally(() => {
+          window.location.replace("");
         });
     }
   }
@@ -61,7 +64,7 @@ function ItemTable() {
                     <Button
                       style={{ minWidth: "94px" }}
                       className="mb-1"
-                      onClick={() => handleDelete(item.name, item.id)}
+                      onClick={() => handleDelete(item.storage, item.id)}
                     >
                       Eliminar
                     </Button>

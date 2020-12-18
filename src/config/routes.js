@@ -7,6 +7,7 @@ import HomeAdmin from "pages/Admin/HomeAdmin";
 import ItemsAdmin from "pages/Admin/ItemsAdmin";
 import AddItem from "pages/Admin/AddItem";
 import EditItem from "pages/Admin/EditItem";
+import AdminTable from "pages/Admin/AdminTable";
 
 // Pages
 import Home from "pages/Home";
@@ -37,6 +38,11 @@ const routes = [
       {
         path: "/admin/items",
         component: ItemsAdmin,
+        exact: true,
+      },
+      {
+        path: "/admin/admins",
+        component: AdminTable,
         exact: true,
       },
       {

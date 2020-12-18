@@ -25,8 +25,12 @@ function EditItem() {
   }, [producto]);
 
   function handleInputChange(e) {
-    const { name, value } = e.target;
-    setItem({ ...item, [name]: value });
+    const { name, value, checked } = e.target;
+    if (name === "onSale") {
+      setItem({ ...item, [name]: checked });
+    } else {
+      setItem({ ...item, [name]: value });
+    }
   }
   function handleEdit(id) {
     db.collection("items")
@@ -59,6 +63,9 @@ function EditItem() {
         })
         .catch((err) => {
           console.log(err);
+        })
+        .finally(() => {
+          history.push("/admin/items");
         });
     }
   }
@@ -153,7 +160,7 @@ function EditItem() {
               <Button
                 style={{ minWidth: "100px" }}
                 color="secondary"
-                onClick={() => handleDelete(item.name, id)}
+                onClick={() => handleDelete(item.storage, item.id)}
               >
                 Eliminar
               </Button>

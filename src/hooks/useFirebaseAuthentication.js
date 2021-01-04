@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
-import { fb, db } from "fire";
+import { db, auth } from "fire";
+import { useLocalUser } from "hooks/useLocalUser";
 
 const useFirebaseAuthentication = () => {
-  const [user, setUser] = useState({});
+  const [storedValue, setValue, emptyStorage] = useLocalUser();
+  const [user, setUser] = useState(storedValue);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const unlisten = fb.auth().onAuthStateChanged((authUser) => {
+    const unlisten = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         const { uid } = authUser;
         const loggedIn = true;
@@ -21,6 +23,10 @@ const useFirebaseAuthentication = () => {
               return;
             }
             setUser({ uid, loggedIn, ...doc.data() });
+            return { uid, loggedIn, ...doc.data() };
+          })
+          .then((user) => {
+            setValue(user);
           })
           .catch((error) => {
             setError(error);
@@ -31,7 +37,8 @@ const useFirebaseAuthentication = () => {
           });
       } else {
         setLoading(false);
-        setUser([{ loggedIn: false, isAuthorized: false, uid: [] }]);
+        emptyStorage();
+        setUser([{ loggedIn: false, uid: [] }]);
       }
     });
     return () => {

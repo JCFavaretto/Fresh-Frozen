@@ -5,7 +5,7 @@ import { Jumbotron } from "reactstrap";
 function ItemsAdmin() {
   return (
     <Jumbotron>
-      <h1>Productos Almacenados</h1>
+      <h3 className="separador">Productos Almacenados</h3>
       <ItemTable />
     </Jumbotron>
   );

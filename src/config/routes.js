@@ -7,12 +7,14 @@ import HomeAdmin from "pages/Admin/HomeAdmin";
 import ItemsAdmin from "pages/Admin/ItemsAdmin";
 import AddItem from "pages/Admin/AddItem";
 import EditItem from "pages/Admin/EditItem";
+import BannersAdmin from "pages/Admin/BannersAdmin";
 import AdminTable from "pages/Admin/AdminTable";
 
 // Pages
 import Home from "pages/Home";
 import Error404 from "pages/Error404";
 import Products from "pages/Products";
+import Login from "pages/Login";
 
 const routes = [
   {
@@ -41,6 +43,11 @@ const routes = [
         exact: true,
       },
       {
+        path: "/admin/banners",
+        component: BannersAdmin,
+        exact: true,
+      },
+      {
         path: "/admin/admins",
         component: AdminTable,
         exact: true,
@@ -63,6 +70,11 @@ const routes = [
       {
         path: "/products",
         component: Products,
+        exact: true,
+      },
+      {
+        path: "/login",
+        component: Login,
         exact: true,
       },
       {

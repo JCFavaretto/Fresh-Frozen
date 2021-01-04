@@ -1,22 +1,30 @@
 import { useGetFirestore } from "hooks/useGetFirestore";
 import React, { useState, useEffect } from "react";
-import { Alert, Input, Jumbotron, Spinner, Table } from "reactstrap";
+import { Alert, Button, Jumbotron, Spinner, Table } from "reactstrap";
 import { db } from "fire";
 
 function AdminTable() {
   const { loading, productos } = useGetFirestore("", "users");
   const [users, setUsers] = useState(productos);
   const [alert, setAlert] = useState(false);
+  const [load, setLoad] = useState(false);
 
   useEffect(() => {
     setUsers(productos);
   }, [productos]);
 
-  function handleEdit(e, data, id) {
+  function handleEdit(data, id) {
+    setLoad(true);
+    let role;
+    if (data.role === "user") {
+      role = "admin";
+    } else {
+      role = "user";
+    }
     const user = {
       Email: data.Email,
       date: data.date,
-      isAuthorized: e.target.checked,
+      role,
     };
     console.log(id);
     db.collection("users")
@@ -29,22 +37,24 @@ function AdminTable() {
         console.log(err);
       })
       .finally(() => {
+        setLoad(false);
         setAlert(true);
         setTimeout(() => {
+          window.location.reload();
           setAlert(false);
-        }, 2000);
+        }, 500);
       });
   }
 
   return (
     <Jumbotron style={{ minHeight: "70vh" }}>
-      <h3 className="separador">Administradores Registrados</h3>
+      <h3 className="separador">Usuarios Registrados</h3>
       <Table>
         <thead>
           <tr>
             <th>E-mail</th>
             <th>Fecha</th>
-            <th>Autorizado</th>
+            <th>Rol</th>
           </tr>
         </thead>
         <tbody>
@@ -66,14 +76,31 @@ function AdminTable() {
                     )}
                   </th>
                   <th>
-                    <Input
-                      type="checkbox"
-                      name="onSale"
-                      defaultChecked={user.isAuthorized}
-                      onChange={(e) => handleEdit(e, user, user.id)}
-                    />
+                    {user.role}{" "}
+                    <Button
+                      style={{ minWidth: "100px" }}
+                      color="secondary"
+                      onClick={() => handleEdit(user, user.id)}
+                    >
+                      Cambiar
+                    </Button>
                   </th>
                   <th>
+                    {load && (
+                      <Spinner
+                        style={{
+                          position: "fixed",
+                          top: "1rem",
+                          right: "2rem",
+                          zIndex: "2000",
+                          width: "4rem",
+                          height: "4rem",
+                        }}
+                        type="grow"
+                        color="primary"
+                      />
+                    )}
+
                     <Alert
                       style={{
                         position: "fixed",

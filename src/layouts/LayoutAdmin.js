@@ -10,7 +10,7 @@ import AuthContext from "context/AuthContext";
 function LayoutAdmin({ routes }) {
   const [{ user, loading }] = useContext(AuthContext);
   if (!loading) {
-    if (!user.loggedIn) {
+    if (!user || !user.loggedIn) {
       return (
         <>
           <Route path="/admin/login" component={LoginAdmin} />
@@ -21,7 +21,7 @@ function LayoutAdmin({ routes }) {
       return (
         <div>
           <HeaderAdmin />
-          {user.isAuthorized ? (
+          {user.role === "admin" ? (
             <Container fluid className="content">
               <Row>
                 <Col>

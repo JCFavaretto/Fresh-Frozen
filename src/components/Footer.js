@@ -1,19 +1,15 @@
 import React from "react";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebookSquare,
-  faInstagramSquare,
-  faWhatsappSquare,
-} from "@fortawesome/free-brands-svg-icons";
 import { Col, Container, Row } from "reactstrap";
+import facebook from "assets/facebook.svg";
+import instagram from "assets/instagram.svg";
+import whatsapp from "assets/whatsapp.svg";
 
 const Footer = () => {
   return (
     <div className="footer ">
       <Container>
-        <Row xs="1" md="2">
-          <Col>Nosotros</Col>
+        <Row xs="1">
           <Col>
             Nuestras Redes Sociales
             <Row
@@ -32,33 +28,32 @@ const Footer = () => {
                     color: "var(--light)",
                   }}
                 >
-                  <FontAwesomeIcon icon={faFacebookSquare} />
+                  <img src={facebook} width="35px" alt="F" />
                 </a>
               </Col>
               <Col style={{ flexGrow: "0" }}>
                 <a
-                  href="https://www.instagram.com"
+                  href="https://www.instagram.com/freshandfrozen.pescaderia"
                   rel="noreferrer"
                   target="_blank"
                   style={{
                     color: "var(--light)",
                   }}
                 >
-                  {" "}
-                  <FontAwesomeIcon icon={faInstagramSquare} />
+                  <img src={instagram} width="35px" alt="F" />
                 </a>
               </Col>
               <Col style={{ flexGrow: "0" }}>
                 <a
-                  href="https://www.whatsapp.com"
+                  href="https://api.whatsapp.com/send?phone=542235395340&text=Buenas! Quisiera conocer mas sobre los productos que ofreces"
                   rel="noreferrer"
                   target="_blank"
                   style={{
-                    color: "var(--light)",
+                    padding: "0",
+                    margin: "0",
                   }}
                 >
-                  {" "}
-                  <FontAwesomeIcon icon={faWhatsappSquare} />
+                  <img src={whatsapp} width="35px" alt="F" />
                 </a>
               </Col>
             </Row>

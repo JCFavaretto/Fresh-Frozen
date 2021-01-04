@@ -1,6 +1,9 @@
 import React, { useState, useContext, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCartArrowDown,
+  faShoppingCart,
+} from "@fortawesome/free-solid-svg-icons";
 import {
   Collapse,
   Navbar,
@@ -18,8 +21,11 @@ import {
 import { Link } from "react-router-dom";
 import Cart from "components/Cart.js";
 import Carrito from "context/CartContext";
+import AuthContext from "context/AuthContext";
+import { auth } from "fire";
 
 const Header = () => {
+  const [{ user }] = useContext(AuthContext);
   const [collapsed, setCollapsed] = useState(true);
 
   const toggleNavbar = () => setCollapsed(!collapsed);
@@ -41,13 +47,14 @@ const Header = () => {
   return (
     <Navbar color="primary" dark expand="md" fixed="top">
       <Container>
-        <NavbarBrand href="/" className="mr-auto">
+        <NavbarBrand href="/" className="logo mr-auto">
           Fresh&Frozen
         </NavbarBrand>
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />{" "}
         <NavItem className="cart-icon" onClick={toggleModal}>
-          <FontAwesomeIcon icon={faShoppingCart} />
-          <span> {cantidad > 0 && cantidad} </span>
+          <FontAwesomeIcon
+            icon={cantidad > 0 ? faCartArrowDown : faShoppingCart}
+          />
         </NavItem>
         <Cart modal={modal} toggleModal={toggleModal} />
         <Collapse isOpen={!collapsed} navbar>
@@ -72,6 +79,21 @@ const Header = () => {
                     Promociones
                   </Link>
                 </DropdownItem>
+                <DropdownItem>
+                  <Link to="/products/promociones" onClick={toggleNavbar}>
+                    Rebozados
+                  </Link>
+                </DropdownItem>
+                <DropdownItem>
+                  <Link to="/products/promociones" onClick={toggleNavbar}>
+                    Congelados
+                  </Link>
+                </DropdownItem>
+                <DropdownItem>
+                  <Link to="/products/promociones" onClick={toggleNavbar}>
+                    Fresco
+                  </Link>
+                </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
             <NavItem>
@@ -79,6 +101,29 @@ const Header = () => {
                 Nosotros
               </NavLink>
             </NavItem>
+            {user.loggedIn ? (
+              <>
+                <NavItem>
+                  <NavLink href={`/user/${user.uid}`} onClick={toggleNavbar}>
+                    {user.name}
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink
+                    href="/"
+                    onClick={() => {
+                      auth.signOut();
+                    }}
+                  >
+                    Salir
+                  </NavLink>
+                </NavItem>
+              </>
+            ) : (
+              <NavItem>
+                <NavLink href="/login">Iniciar Sesion</NavLink>
+              </NavItem>
+            )}
           </Nav>
         </Collapse>
       </Container>

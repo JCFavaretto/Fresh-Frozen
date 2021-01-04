@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-export function useLocalCart() {
+export function useLocalUser() {
   const emptyCart = [];
   const [storedValue, setStoredValue] = useState(() => {
     try {
-      const item = window.localStorage.getItem("cart");
-      return item ? JSON.parse(item) : emptyCart;
+      const user = window.localStorage.getItem("user");
+      return user ? JSON.parse(user) : emptyCart;
     } catch (err) {
       console.log(err);
     }
@@ -14,7 +14,7 @@ export function useLocalCart() {
   const setValue = (value) => {
     setStoredValue(value);
     try {
-      window.localStorage.setItem("cart", JSON.stringify(value));
+      window.localStorage.setItem("user", JSON.stringify(value));
     } catch (err) {
       console.log(err);
     }
@@ -22,7 +22,7 @@ export function useLocalCart() {
 
   const emptyStorage = () => {
     try {
-      window.localStorage.removeItem("cart");
+      window.localStorage.removeItem("user");
     } catch (err) {
       console.log(err);
     }

@@ -1,6 +1,5 @@
 body {
-  background-color: #282828;
-
+  background-image: linear-gradient(to right bottom, #214261, #413e69, #633662, #7d2d4e, #882e30);
   font-family: Montserrat, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
 }
@@ -58,6 +57,11 @@ a:hover {
 
 
 /* components/Header */
+.logo {
+  color: var(--dark);
+  font-size: 1.5rem;
+}
+
 
 .cart-icon {
   color: rgba(255, 255, 255, .6);
@@ -78,6 +82,7 @@ a:hover {
 .cart-icon:focus {
   color: white;
 }
+
 
 @media (min-width: 768px) {
   .cart-icon {
@@ -104,7 +109,7 @@ a:hover {
 /* components/Footer */
 .footer {
   min-height: 5rem;
-  background-color: var(--primary);
+  background-color: var(--dark);
   color: white;
   text-align: center;
   margin-top: 2rem;
@@ -151,6 +156,22 @@ a:hover {
 .reg:hover {
   cursor: pointer;
   color: var(--primary);
+}
+
+/* Admin Banner */
+.banner-add {
+  height: 150px;
+  border: 1px solid var(--dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary);
+  font-size: 5rem;
+
+}
+
+.banner-add:hover {
+  color: var(--secondary);
 }
 
 /* Admin Footer */

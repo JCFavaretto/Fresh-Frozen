@@ -11,7 +11,7 @@ import { fb, db } from "fire";
 
 import { useHistory } from "react-router-dom";
 
-const LoginAdmin = () => {
+const Login = () => {
   const [reg, setReg] = useState(false);
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
@@ -45,7 +45,7 @@ const LoginAdmin = () => {
             setError(() => err.message);
           })
           .finally(() => {
-            history.push("/admin");
+            history.push("/");
           });
       } else {
         fb.auth()
@@ -60,7 +60,7 @@ const LoginAdmin = () => {
             setError(() => err.message);
           })
           .finally(() => {
-            history.push("/admin");
+            history.push("/");
           });
       }
     }
@@ -86,75 +86,66 @@ const LoginAdmin = () => {
   };
 
   return (
-    <div
-      style={{
-        backgroundColor: "black",
-        width: "100%",
-        height: "100vh",
-        paddingTop: "2rem",
-      }}
-    >
-      <Container>
-        <Jumbotron>
-          <h1>{reg ? "Registro de Usuario" : "Inicio de Sesion"}</h1>
+    <Container>
+      <Jumbotron>
+        <h1>{reg ? "Registro de Usuario" : "Inicio de Sesion"}</h1>
 
-          <Form onSubmit={handleAuthSubmit}>
-            {reg && (
-              <FormGroup>
-                <Input
-                  type="text"
-                  name="name"
-                  onChange={handleInput}
-                  placeholder="Nombre"
-                  required
-                />
-              </FormGroup>
-            )}
+        <Form onSubmit={handleAuthSubmit}>
+          {reg && (
             <FormGroup>
               <Input
-                type="mail"
-                name="Email"
+                type="text"
+                name="name"
                 onChange={handleInput}
-                placeholder="E-mail"
+                placeholder="Nombre"
                 required
               />
             </FormGroup>
-            <FormGroup>
-              <Input
-                type="password"
-                name="pass"
-                onChange={handleInput}
-                placeholder="Contraseña"
-                required
-              />
-            </FormGroup>
-            {reg && (
-              <FormGroup>
-                <Input
-                  type="text"
-                  onChange={confirmPass}
-                  placeholder="Confirme contraseña"
-                  required
-                />
-              </FormGroup>
-            )}
-            <p style={{ color: "var(--danger)" }}>{error}</p>
-            <p style={{ color: "var(--success)" }}>{success} </p>
-            <Button color="primary">Ingresar</Button>
-          </Form>
-          {!reg ? (
-            <p className="reg mt-2" onClick={loginOrSign}>
-              Registrar usuario nuevo
-            </p>
-          ) : (
-            <p className="reg mt-2" onClick={loginOrSign}>
-              Ya tengo cuenta
-            </p>
           )}
-        </Jumbotron>
-      </Container>
-    </div>
+          <FormGroup>
+            <Input
+              type="mail"
+              name="Email"
+              onChange={handleInput}
+              placeholder="E-mail"
+              required
+            />
+          </FormGroup>
+          <FormGroup>
+            <Input
+              type="password"
+              name="pass"
+              onChange={handleInput}
+              placeholder="Contraseña"
+              required
+            />
+          </FormGroup>
+          {reg && (
+            <FormGroup>
+              <Input
+                type="text"
+                onChange={confirmPass}
+                placeholder="Confirme contraseña"
+                required
+              />
+            </FormGroup>
+          )}
+          <p style={{ color: "var(--danger)" }}>{error}</p>
+          <p style={{ color: "var(--success)" }}>{success} </p>
+          <Button color="primary">Ingresar</Button>
+        </Form>
+        {!reg ? (
+          <p className="reg mt-2" onClick={loginOrSign}>
+            Registrar usuario nuevo
+          </p>
+        ) : (
+          <p className="reg mt-2" onClick={loginOrSign}>
+            Ya tengo cuenta
+          </p>
+        )}
+      </Jumbotron>
+    </Container>
   );
 };
 
-export default LoginAdmin;
+export default Login;

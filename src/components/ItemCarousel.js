@@ -41,11 +41,22 @@ const ItemCarousel = () => {
   return (
     <div>
       {loading ? (
-        <Spinner
-          style={{ margin: "0 auto", width: "4rem", height: "4rem" }}
-          type="grow"
-          color="secondary"
-        />
+        <div style={{ width: "100%", height: "400px", position: "relative" }}>
+          <Spinner
+            style={{
+              position: "absolute",
+              top: "0",
+              left: "0",
+              right: "0",
+              bottom: "0",
+              margin: "auto",
+              width: "4rem",
+              height: "4rem",
+            }}
+            type="grow"
+            color="secondary"
+          />
+        </div>
       ) : (
         <CarouselProvider
           className="item-carousel"

@@ -132,6 +132,25 @@ a:hover {
   margin: 0;
 }
 
+/* components /Banner */
+.pagination-banner {
+  width: 10px;
+  height: 10px;
+  margin: 8px;
+  padding: 0;
+  background-color: var(--secondary-dark);
+  transform: scale(1.1);
+  cursor: pointer;
+  transition: all 250ms ease-in 0s;
+  box-shadow: rgb(85, 85, 85) 0px 0px 2px 1px;
+
+}
+
+.banner-active {
+  width: 15px;
+  height: 15px;
+  background-color: var(--secondary);
+}
 
 
 

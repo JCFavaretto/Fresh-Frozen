@@ -9,9 +9,25 @@ function ItemList() {
   return (
     <div className="mt-5">
       {loading ? (
-        <div style={{ alignItems: "center" }}>
+        <div
+          style={{
+            alignItems: "center",
+            width: "100%",
+            height: "50vh",
+            position: "relative",
+          }}
+        >
           <Spinner
-            style={{ margin: "0 auto", width: "4rem", height: "4rem" }}
+            style={{
+              position: "absolute",
+              top: "0",
+              left: "0",
+              right: "0",
+              bottom: "0",
+              margin: "auto",
+              width: "4rem",
+              height: "4rem",
+            }}
             type="grow"
             color="secondary"
           />

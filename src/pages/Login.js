@@ -120,15 +120,6 @@ const Login = () => {
               required
             />
           </FormGroup>
-          {!reg ? (
-            <p className="reg mt-2" onClick={loginOrSign}>
-              Registrar usuario nuevo
-            </p>
-          ) : (
-            <p className="reg mt-2" onClick={loginOrSign}>
-              Ya tengo cuenta
-            </p>
-          )}
           {reg && (
             <FormGroup>
               <Input
@@ -138,6 +129,15 @@ const Login = () => {
                 required
               />
             </FormGroup>
+          )}{" "}
+          {!reg ? (
+            <p className="reg mt-2" onClick={loginOrSign}>
+              Registrar usuario nuevo
+            </p>
+          ) : (
+            <p className="reg mt-2" onClick={loginOrSign}>
+              Ya tengo cuenta
+            </p>
           )}
           <p style={{ color: "var(--danger)" }}>{error}</p>
           <p style={{ color: "var(--success)" }}>{success} </p>

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Input, Form, FormGroup, Button } from "reactstrap";
+import { Input, Form, FormGroup, Button, Label } from "reactstrap";
 
 const ItemForm = ({ addItem }) => {
   const initialValues = {
     name: "",
     alt: "",
+    cat: "fresco",
     img: "",
     price: "",
     stock: "",
@@ -13,9 +14,11 @@ const ItemForm = ({ addItem }) => {
   };
 
   const [item, setItem] = useState(initialValues);
+  console.log(item);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    console.log(value);
     setItem({ ...item, [name]: value });
   };
 
@@ -48,6 +51,20 @@ const ItemForm = ({ addItem }) => {
           onChange={handleInputChange}
           required
         />
+      </FormGroup>
+      <FormGroup>
+        <Label for="exampleSelect">Categoria: </Label>
+        <Input
+          type="select"
+          name="cat"
+          id="exampleSelect"
+          defaultValue={initialValues.cat}
+          onChange={handleInputChange}
+        >
+          <option>fresco</option>
+          <option>congelado</option>
+          <option>rebozado</option>
+        </Input>
       </FormGroup>
       <FormGroup>
         <label htmlFor="nuevaimg">Seleccione Imagen del producto</label>

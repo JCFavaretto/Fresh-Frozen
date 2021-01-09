@@ -9,6 +9,11 @@ a:hover {
 }
 
 /* Utilities */
+.sub-h3 {
+  color: white;
+}
+
+
 .hover-pointer {
   cursor: pointer;
 }
@@ -101,9 +106,8 @@ a:hover {
 
 /* Layout Content */
 .content {
-  margin-top: 4rem;
+  margin-top: 5rem;
   min-height: calc(100vh - 11rem);
-
 }
 
 /* components/Footer */
@@ -113,6 +117,19 @@ a:hover {
   color: white;
   text-align: center;
   margin-top: 2rem;
+}
+
+/* components /GoogleSignIn */
+.btn-google {
+  margin-top: 2rem;
+  border: 1px solid #888888;
+  align-items: center;
+  max-width: 250px;
+}
+
+.btn-google p {
+  color: #888888;
+  margin: 0;
 }
 
 

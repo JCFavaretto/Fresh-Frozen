@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import {
   Button,
   Modal,
@@ -12,11 +12,13 @@ import {
   Col,
 } from "reactstrap";
 import Carrito from "context/CartContext";
+import AuthContext from "context/AuthContext";
 
 const Cart = ({ modal, toggleModal }) => {
   const [{ cart, calcularCantidad, removeFromCart, totalGasto }] = useContext(
     Carrito
   );
+  const [{ user }] = useContext(AuthContext);
 
   return (
     <div>
@@ -66,9 +68,19 @@ const Cart = ({ modal, toggleModal }) => {
           </ModalBody>
         )}
         <ModalFooter>
-          {calcularCantidad() !== 0 && (
+          {calcularCantidad() !== 0 && user.loggedIn ? (
             <Button color="primary" onClick={toggleModal}>
               Comprar
+            </Button>
+          ) : (
+            <Button color="primary">
+              <Link
+                style={{ color: "white" }}
+                to="/login"
+                onClick={toggleModal}
+              >
+                Ingresar
+              </Link>
             </Button>
           )}
           <Button color="secondary" onClick={toggleModal}>

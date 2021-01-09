@@ -4,6 +4,7 @@ import { useLocalUser } from "hooks/useLocalUser";
 
 const useFirebaseAuthentication = () => {
   const [storedValue, setValue, emptyStorage] = useLocalUser();
+
   const [user, setUser] = useState(storedValue);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -26,7 +27,13 @@ const useFirebaseAuthentication = () => {
             return { uid, loggedIn, ...doc.data() };
           })
           .then((user) => {
-            setValue(user);
+            const { uid, loggedIn, name } = user;
+            const data = {
+              uid,
+              loggedIn,
+              name,
+            };
+            setValue(data);
           })
           .catch((error) => {
             setError(error);

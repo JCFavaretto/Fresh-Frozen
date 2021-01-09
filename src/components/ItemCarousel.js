@@ -80,11 +80,11 @@ const ItemCarousel = () => {
           </Slider>
           <Row style={calculateSlides() === 1 ? { display: "none" } : {}}>
             <Col xs="2">
-              <ButtonBack className="btn btn-secondary">Anterior</ButtonBack>
+              <ButtonBack className="btn btn-primary">Anterior</ButtonBack>
             </Col>
             <Col xs="8"></Col>
             <Col xs="2">
-              <ButtonNext className="btn btn-secondary">Siguiente</ButtonNext>
+              <ButtonNext className="btn btn-primary">Siguiente</ButtonNext>
             </Col>
           </Row>
         </CarouselProvider>

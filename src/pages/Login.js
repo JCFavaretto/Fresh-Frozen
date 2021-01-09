@@ -10,6 +10,7 @@ import {
 import { fb, db } from "fire";
 
 import { useHistory } from "react-router-dom";
+import GoogleSignIn from "components/GoogleSignIn";
 
 const Login = () => {
   const [reg, setReg] = useState(false);
@@ -69,7 +70,6 @@ const Login = () => {
   const handleInput = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
-    console.log(user);
   };
 
   const confirmPass = (e) => {
@@ -120,6 +120,15 @@ const Login = () => {
               required
             />
           </FormGroup>
+          {!reg ? (
+            <p className="reg mt-2" onClick={loginOrSign}>
+              Registrar usuario nuevo
+            </p>
+          ) : (
+            <p className="reg mt-2" onClick={loginOrSign}>
+              Ya tengo cuenta
+            </p>
+          )}
           {reg && (
             <FormGroup>
               <Input
@@ -134,15 +143,8 @@ const Login = () => {
           <p style={{ color: "var(--success)" }}>{success} </p>
           <Button color="primary">Ingresar</Button>
         </Form>
-        {!reg ? (
-          <p className="reg mt-2" onClick={loginOrSign}>
-            Registrar usuario nuevo
-          </p>
-        ) : (
-          <p className="reg mt-2" onClick={loginOrSign}>
-            Ya tengo cuenta
-          </p>
-        )}
+
+        <GoogleSignIn />
       </Jumbotron>
     </Container>
   );

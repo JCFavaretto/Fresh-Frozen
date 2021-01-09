@@ -18,7 +18,6 @@ import {
   Container,
   NavLink,
 } from "reactstrap";
-import { Link } from "react-router-dom";
 import Cart from "components/Cart.js";
 import Carrito from "context/CartContext";
 import AuthContext from "context/AuthContext";
@@ -26,6 +25,7 @@ import { auth } from "fire";
 
 const Header = () => {
   const [{ user }] = useContext(AuthContext);
+  const { uid } = user;
   const [collapsed, setCollapsed] = useState(true);
 
   const toggleNavbar = () => setCollapsed(!collapsed);
@@ -65,34 +65,34 @@ const Header = () => {
               </DropdownToggle>
               <DropdownMenu style={{ backgroundColor: "var(--primary)" }}>
                 <DropdownItem>
-                  <Link to="/products" onClick={toggleNavbar}>
+                  <NavLink href="/products" onClick={toggleNavbar}>
                     Todos los productos
-                  </Link>
+                  </NavLink>
                 </DropdownItem>
                 <DropdownItem>
-                  <Link to="/products/hottest" onClick={toggleNavbar}>
+                  <NavLink href="/products/hottest" onClick={toggleNavbar}>
                     Lo mas vendido
-                  </Link>
+                  </NavLink>
                 </DropdownItem>
                 <DropdownItem>
-                  <Link to="/products/promociones" onClick={toggleNavbar}>
+                  <NavLink href="/products/onSale" onClick={toggleNavbar}>
                     Promociones
-                  </Link>
+                  </NavLink>
                 </DropdownItem>
                 <DropdownItem>
-                  <Link to="/products/promociones" onClick={toggleNavbar}>
-                    Rebozados
-                  </Link>
-                </DropdownItem>
-                <DropdownItem>
-                  <Link to="/products/promociones" onClick={toggleNavbar}>
-                    Congelados
-                  </Link>
-                </DropdownItem>
-                <DropdownItem>
-                  <Link to="/products/promociones" onClick={toggleNavbar}>
+                  <NavLink href="/products/fresco" onClick={toggleNavbar}>
                     Fresco
-                  </Link>
+                  </NavLink>
+                </DropdownItem>
+                <DropdownItem>
+                  <NavLink href="/products/rebozado" onClick={toggleNavbar}>
+                    Rebozados
+                  </NavLink>
+                </DropdownItem>
+                <DropdownItem>
+                  <NavLink href="/products/congelado" onClick={toggleNavbar}>
+                    Congelados
+                  </NavLink>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
@@ -102,23 +102,33 @@ const Header = () => {
               </NavLink>
             </NavItem>
             {user.loggedIn ? (
-              <>
-                <NavItem>
-                  <NavLink href={`/user/${user.uid}`} onClick={toggleNavbar}>
-                    {user.name}
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink
-                    href="/"
-                    onClick={() => {
-                      auth.signOut();
-                    }}
-                  >
-                    Salir
-                  </NavLink>
-                </NavItem>
-              </>
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>
+                  {user.name}
+                </DropdownToggle>
+                <DropdownMenu style={{ backgroundColor: "var(--primary)" }}>
+                  <DropdownItem>
+                    <NavLink href={`/${uid}`} onClick={toggleNavbar}>
+                      Mis datos
+                    </NavLink>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <NavLink href="/compras" onClick={toggleNavbar}>
+                      Mis compras
+                    </NavLink>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <NavLink
+                      href="/"
+                      onClick={() => {
+                        auth.signOut();
+                      }}
+                    >
+                      Salir
+                    </NavLink>
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
             ) : (
               <NavItem>
                 <NavLink href="/login">Iniciar Sesion</NavLink>

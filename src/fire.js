@@ -18,5 +18,6 @@ const fb = firebase.initializeApp(firebaseConfig);
 const storage = fb.storage();
 const db = fb.firestore();
 const auth = fb.auth();
+auth.useDeviceLanguage();
 
 export { fb, storage, db, auth };

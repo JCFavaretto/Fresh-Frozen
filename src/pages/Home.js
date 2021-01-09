@@ -5,7 +5,7 @@ import { Container } from "reactstrap";
 
 function Home() {
   return (
-    <div className="jumbotron">
+    <div>
       <Banner />
       <Container
         style={{
@@ -14,7 +14,7 @@ function Home() {
           paddingTop: "1rem",
         }}
       >
-        <h3>Nuestros destacados</h3>
+        <h3 className="sub-h3">Nuestros destacados</h3>
         <ItemCarousel />
       </Container>
     </div>

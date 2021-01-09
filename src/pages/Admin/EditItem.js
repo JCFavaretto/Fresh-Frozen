@@ -108,6 +108,20 @@ function EditItem() {
               />
             </FormGroup>
             <FormGroup>
+              <Label for="exampleSelect">Categoria: </Label>
+              <Input
+                type="select"
+                name="cat"
+                id="exampleSelect"
+                defaultValue={item.cat}
+                onChange={handleInputChange}
+              >
+                <option>fresco</option>
+                <option>congelado</option>
+                <option>rebozado</option>
+              </Input>
+            </FormGroup>
+            <FormGroup>
               <Input
                 type="number"
                 name="price"

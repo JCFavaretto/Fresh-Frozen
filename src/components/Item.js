@@ -34,10 +34,15 @@ const Item = ({ id, name, img, alt, price, stock }) => {
         <CardText style={{ minHeight: "48px" }}>
           Precio por kilo: ${price}
         </CardText>
-
-        <Button color="secondary" onClick={toggleModal}>
-          Comprar
-        </Button>
+        {stock > 0 ? (
+          <Button color="secondary" onClick={toggleModal}>
+            Comprar
+          </Button>
+        ) : (
+          <Button color="secondary" disabled>
+            Sin Stock
+          </Button>
+        )}
         <ItemDetail
           alt={alt}
           modal={modal2}

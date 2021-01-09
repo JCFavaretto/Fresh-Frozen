@@ -2,5 +2,5 @@
 
 See a built version here:
 ```
-[a link](freshandfrozen.netlify.app)
+[Fresh&Frozen](https://freshandfrozen.netlify.app/)
 ```

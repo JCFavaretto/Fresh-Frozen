@@ -33,7 +33,7 @@ function ItemList() {
           />
         </div>
       ) : (
-        <Row sm="2" md="3" lg="4">
+        <Row sm="1" md="3" lg="4">
           {Array.isArray(productos) &&
             productos.map((item) => {
               return (

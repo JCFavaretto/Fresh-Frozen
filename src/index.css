@@ -123,13 +123,19 @@ a:hover {
 .btn-google {
   margin-top: 2rem;
   border: 1px solid #888888;
+  background-color: var(--white);
   align-items: center;
   max-width: 250px;
+  color: #888888;
 }
 
 .btn-google p {
-  color: #888888;
   margin: 0;
+}
+
+.btn-google:hover {
+  background-color: var(--blue);
+  border: none;
 }
 
 /* components /Banner */

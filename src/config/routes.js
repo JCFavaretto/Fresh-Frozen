@@ -15,6 +15,7 @@ import Home from "pages/Home";
 import Error404 from "pages/Error404";
 import Products from "pages/Products";
 import Login from "pages/Login";
+import Comprar from "pages/Comprar";
 
 const routes = [
   {
@@ -73,8 +74,18 @@ const routes = [
         exact: true,
       },
       {
+        path: "/products/:cat",
+        component: Products,
+        exact: true,
+      },
+      {
         path: "/login",
         component: Login,
+        exact: true,
+      },
+      {
+        path: "/comprar",
+        component: Comprar,
         exact: true,
       },
       {

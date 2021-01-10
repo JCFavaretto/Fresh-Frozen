@@ -87,65 +87,74 @@ const Login = () => {
 
   return (
     <Container>
-      <Jumbotron>
-        <h1>{reg ? "Registro de Usuario" : "Inicio de Sesion"}</h1>
+      <h1 className="sub-h3 separador">
+        {reg ? "Registro de Usuario" : "Inicio de Sesion"}
+      </h1>
 
-        <Form onSubmit={handleAuthSubmit}>
-          {reg && (
-            <FormGroup>
-              <Input
-                type="text"
-                name="name"
-                onChange={handleInput}
-                placeholder="Nombre"
-                required
-              />
-            </FormGroup>
-          )}
+      <Form
+        onSubmit={handleAuthSubmit}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
+        {reg && (
           <FormGroup>
             <Input
-              type="mail"
-              name="Email"
+              type="text"
+              name="name"
               onChange={handleInput}
-              placeholder="E-mail"
+              placeholder="Nombre"
               required
             />
           </FormGroup>
+        )}
+        <FormGroup>
+          <Input
+            type="mail"
+            name="Email"
+            onChange={handleInput}
+            placeholder="E-mail"
+            required
+          />
+        </FormGroup>
+        <FormGroup>
+          <Input
+            type="password"
+            name="pass"
+            onChange={handleInput}
+            placeholder="Contraseña"
+            required
+          />
+        </FormGroup>
+        {reg && (
           <FormGroup>
             <Input
-              type="password"
-              name="pass"
-              onChange={handleInput}
-              placeholder="Contraseña"
+              type="text"
+              onChange={confirmPass}
+              placeholder="Confirme contraseña"
               required
             />
           </FormGroup>
-          {reg && (
-            <FormGroup>
-              <Input
-                type="text"
-                onChange={confirmPass}
-                placeholder="Confirme contraseña"
-                required
-              />
-            </FormGroup>
-          )}{" "}
-          {!reg ? (
-            <p className="reg mt-2" onClick={loginOrSign}>
-              Registrar usuario nuevo
-            </p>
-          ) : (
-            <p className="reg mt-2" onClick={loginOrSign}>
-              Ya tengo cuenta
-            </p>
-          )}
-          <p style={{ color: "var(--danger)" }}>{error}</p>
-          <p style={{ color: "var(--success)" }}>{success} </p>
-          <Button color="primary">Ingresar</Button>
-        </Form>
+        )}{" "}
+        {!reg ? (
+          <p className="reg mt-2 sub-h3" onClick={loginOrSign}>
+            Registrar usuario nuevo
+          </p>
+        ) : (
+          <p className="reg mt-2 sub-h3" onClick={loginOrSign}>
+            Ya tengo cuenta
+          </p>
+        )}
+        <p style={{ color: "var(--danger)" }}>{error}</p>
+        <p style={{ color: "var(--success)" }}>{success} </p>
+        <Button style={{ margin: "0 auto" }} color="primary">
+          {reg ? "Registrar" : "Ingresar"}
+        </Button>
+      </Form>
 
-        <GoogleSignIn />
-      </Jumbotron>
+      <GoogleSignIn />
     </Container>
   );
 };

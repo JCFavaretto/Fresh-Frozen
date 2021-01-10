@@ -5,7 +5,7 @@ import Carousel from "react-elastic-carousel";
 import { Col, Row, Spinner } from "reactstrap";
 
 function Banner() {
-  const { productos, loading } = useGetFirestore("", "banners");
+  const { productos, loading } = useGetFirestore("banners");
   const bannerOfi = {
     path: "/",
     name: "logo",

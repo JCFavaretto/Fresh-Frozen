@@ -14,7 +14,7 @@ function Home() {
           paddingTop: "1rem",
         }}
       >
-        <h3 className="sub-h3">Nuestros destacados</h3>
+        <h3 className="sub-h3">Productos Mas Vendidos</h3>
         <ItemCarousel />
       </Container>
     </div>

@@ -4,7 +4,7 @@ import { Alert, Button, Jumbotron, Spinner, Table } from "reactstrap";
 import { db } from "fire";
 
 function AdminTable() {
-  const { loading, productos } = useGetFirestore("", "users");
+  const { loading, productos } = useGetFirestore("users");
   const [users, setUsers] = useState(productos);
   const [alert, setAlert] = useState(false);
   const [load, setLoad] = useState(false);

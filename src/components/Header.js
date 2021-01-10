@@ -70,11 +70,6 @@ const Header = () => {
                   </NavLink>
                 </DropdownItem>
                 <DropdownItem>
-                  <NavLink href="/products/hottest" onClick={toggleNavbar}>
-                    Lo mas vendido
-                  </NavLink>
-                </DropdownItem>
-                <DropdownItem>
                   <NavLink href="/products/onSale" onClick={toggleNavbar}>
                     Promociones
                   </NavLink>

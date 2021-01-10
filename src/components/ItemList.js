@@ -3,8 +3,8 @@ import { useGetFirestore } from "hooks/useGetFirestore";
 import { Row, Col, Spinner } from "reactstrap";
 import Item from "components/Item";
 
-function ItemList() {
-  const { loading, productos } = useGetFirestore();
+function ItemList({ cat }) {
+  const { loading, productos } = useGetFirestore("items", cat);
 
   return (
     <div className="mt-5">

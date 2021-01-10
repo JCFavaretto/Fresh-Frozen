@@ -1,17 +1,24 @@
 import { useEffect, useState } from "react";
 import { db } from "fire.js";
 
-export function useGetFirestore(where = "", collection = "items") {
+export function useGetFirestore(collection = "items", cat = "") {
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
-    const itemCollection = db.collection(collection);
-    if (where === "hottest") {
-      itemCollection.orderBy("sold", "desc").limit(6);
-    } else if (where === "onSale") {
-      itemCollection.where("onSale", "==", true);
+    let itemCollection;
+    if (cat === "") {
+      itemCollection = db.collection(collection);
+    } else if (cat === "onSale") {
+      itemCollection = db.collection(collection).where("onSale", "==", true);
+    } else if (cat === "trending") {
+      itemCollection = db
+        .collection(collection)
+        .orderBy("sold", "desc")
+        .limit(10);
+    } else {
+      itemCollection = db.collection(collection).where("cat", "==", cat);
     }
     itemCollection
       .get()

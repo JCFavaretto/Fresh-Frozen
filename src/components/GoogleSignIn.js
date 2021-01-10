@@ -21,8 +21,6 @@ function GoogleSignIn() {
           .get()
           .then((querySnapshot) => {
             if (querySnapshot.size === 0) {
-              console.log("No hay resultados!");
-            } else {
               db.collection("users")
                 .doc(user.uid)
                 .set({
@@ -39,6 +37,7 @@ function GoogleSignIn() {
                     dept: "",
                   },
                 });
+            } else {
             }
           });
       })
@@ -51,7 +50,11 @@ function GoogleSignIn() {
   };
 
   return (
-    <div className="btn btn-google hover-pointer d-flex" onClick={handleClick}>
+    <div
+      className="btn btn-google hover-pointer d-flex  justify-content-center"
+      style={{ margin: "1rem auto" }}
+      onClick={handleClick}
+    >
       <img src={google} width="35px" alt="G" />
       <p>Conectarse con Google</p>
     </div>

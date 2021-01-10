@@ -67,21 +67,24 @@ const Cart = ({ modal, toggleModal }) => {
             </p>
           </ModalBody>
         )}
-        <ModalFooter>
-          {calcularCantidad() !== 0 && user.loggedIn ? (
-            <Button color="primary" onClick={toggleModal}>
-              Comprar
-            </Button>
+        <ModalFooter className="justify-content-around">
+          {calcularCantidad() === 0 ? (
+            <Link style={{ color: "white" }} to="/products">
+              <Button color="primary" onClick={toggleModal}>
+                Ir a Productos
+              </Button>
+            </Link>
+          ) : user.loggedIn ? (
+            <Link style={{ color: "white" }} to="/comprar">
+              <Button color="primary" onClick={toggleModal}>
+                {" "}
+                Comprar
+              </Button>
+            </Link>
           ) : (
-            <Button color="primary">
-              <Link
-                style={{ color: "white" }}
-                to="/login"
-                onClick={toggleModal}
-              >
-                Ingresar
-              </Link>
-            </Button>
+            <Link style={{ color: "white" }} to="/login" onClick={toggleModal}>
+              <Button color="primary">Ingresar</Button>
+            </Link>
           )}
           <Button color="secondary" onClick={toggleModal}>
             Cerrar

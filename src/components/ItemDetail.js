@@ -20,7 +20,7 @@ const ItemDetail = ({ alt, modal, toggleModal, count, setCount, cartItem }) => {
         <ModalHeader toggle={toggleModal}>{cartItem.name} </ModalHeader>
         <ModalBody>{alt}</ModalBody>
 
-        <ModalFooter>
+        <ModalFooter className="justify-content-around">
           <ItemCount
             count={cartItem.count}
             setCount={setCount}

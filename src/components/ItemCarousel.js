@@ -14,7 +14,7 @@ import { Row, Col, Spinner } from "reactstrap";
 import useWindowDimensions from "hooks/useWindowDimensions";
 
 const ItemCarousel = () => {
-  const { loading, productos } = useGetFirestore();
+  const { loading, productos } = useGetFirestore("items", "trending");
 
   const { width } = useWindowDimensions();
 

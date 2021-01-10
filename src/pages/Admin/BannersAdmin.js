@@ -8,7 +8,7 @@ import { storage, db } from "fire";
 import { useHistory } from "react-router-dom";
 
 function BannersAdmin() {
-  const { loading, productos } = useGetFirestore("", "banners");
+  const { loading, productos } = useGetFirestore("banners");
 
   const history = useHistory();
 

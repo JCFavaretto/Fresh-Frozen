@@ -27,11 +27,12 @@ const useFirebaseAuthentication = () => {
             return { uid, loggedIn, ...doc.data() };
           })
           .then((user) => {
-            const { uid, loggedIn, name } = user;
+            const { uid, loggedIn, name, Email } = user;
             const data = {
               uid,
               loggedIn,
               name,
+              Email,
             };
             setValue(data);
           })

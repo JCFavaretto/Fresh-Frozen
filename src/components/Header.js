@@ -16,12 +16,12 @@ import {
   DropdownMenu,
   DropdownItem,
   Container,
-  NavLink,
 } from "reactstrap";
 import Cart from "components/Cart.js";
 import Carrito from "context/CartContext";
 import AuthContext from "context/AuthContext";
 import { auth } from "fire";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   const [{ user }] = useContext(AuthContext);
@@ -45,17 +45,21 @@ const Header = () => {
   );
 
   return (
-    <Navbar color="primary" dark expand="md" fixed="top">
+    <Navbar style={{ position: "relative" }} color="primary" dark expand="md">
       <Container>
-        <NavbarBrand href="/" className="logo mr-auto">
-          Fresh&Frozen
-        </NavbarBrand>
-        <NavbarToggler onClick={toggleNavbar} className="mr-2" />{" "}
-        <NavItem className="cart-icon" onClick={toggleModal}>
-          <FontAwesomeIcon
-            icon={cantidad > 0 ? faCartArrowDown : faShoppingCart}
-          />
-        </NavItem>
+        <NavLink to="/">
+          <NavbarBrand className="logo mr-auto">
+            <NavLink to="/">Fresh&Frozen</NavLink>
+          </NavbarBrand>
+        </NavLink>
+        <div className="d-flex flex-end align-self-end nav-icons">
+          <NavbarToggler onClick={toggleNavbar} className="mr-2" />{" "}
+          <NavItem className="cart-icon" onClick={toggleModal}>
+            <FontAwesomeIcon
+              icon={cantidad > 0 ? faCartArrowDown : faShoppingCart}
+            />
+          </NavItem>
+        </div>
         <Cart modal={modal} toggleModal={toggleModal} />
         <Collapse isOpen={!collapsed} navbar>
           <Nav navbar className="ml-5">
@@ -65,37 +69,55 @@ const Header = () => {
               </DropdownToggle>
               <DropdownMenu style={{ backgroundColor: "var(--primary)" }}>
                 <DropdownItem>
-                  <NavLink href="/products" onClick={toggleNavbar}>
+                  <NavLink
+                    className="nav-link"
+                    to="/products"
+                    onClick={toggleNavbar}
+                  >
                     Todos los productos
                   </NavLink>
                 </DropdownItem>
                 <DropdownItem>
-                  <NavLink href="/products/onSale" onClick={toggleNavbar}>
+                  <NavLink
+                    className="nav-link"
+                    to="/products/onSale"
+                    onClick={toggleNavbar}
+                  >
                     Promociones
                   </NavLink>
                 </DropdownItem>
                 <DropdownItem>
-                  <NavLink href="/products/fresco" onClick={toggleNavbar}>
+                  <NavLink
+                    className="nav-link"
+                    to="/products/fresco"
+                    onClick={toggleNavbar}
+                  >
                     Fresco
                   </NavLink>
                 </DropdownItem>
                 <DropdownItem>
-                  <NavLink href="/products/rebozado" onClick={toggleNavbar}>
+                  <NavLink
+                    className="nav-link"
+                    to="/products/rebozado"
+                    onClick={toggleNavbar}
+                  >
                     Rebozados
                   </NavLink>
                 </DropdownItem>
                 <DropdownItem>
-                  <NavLink href="/products/congelado" onClick={toggleNavbar}>
+                  <NavLink
+                    className="nav-link"
+                    to="/products/congelado"
+                    onClick={toggleNavbar}
+                  >
                     Congelados
                   </NavLink>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
-            <NavItem>
-              <NavLink href="/contactus" onClick={toggleNavbar}>
-                Nosotros
-              </NavLink>
-            </NavItem>
+            <NavLink className="nav-link" to="/nosotros" onClick={toggleNavbar}>
+              Nosotros
+            </NavLink>
             {user.loggedIn ? (
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
@@ -103,18 +125,27 @@ const Header = () => {
                 </DropdownToggle>
                 <DropdownMenu style={{ backgroundColor: "var(--primary)" }}>
                   <DropdownItem>
-                    <NavLink href={`/${uid}`} onClick={toggleNavbar}>
+                    <NavLink
+                      className="nav-link"
+                      to={`/${uid}`}
+                      onClick={toggleNavbar}
+                    >
                       Mis datos
                     </NavLink>
                   </DropdownItem>
                   <DropdownItem>
-                    <NavLink href="/compras" onClick={toggleNavbar}>
+                    <NavLink
+                      className="nav-link"
+                      to="/compras"
+                      onClick={toggleNavbar}
+                    >
                       Mis compras
                     </NavLink>
                   </DropdownItem>
                   <DropdownItem>
                     <NavLink
-                      href="/"
+                      className="nav-link"
+                      to="/"
                       onClick={() => {
                         auth.signOut();
                       }}
@@ -126,7 +157,9 @@ const Header = () => {
               </UncontrolledDropdown>
             ) : (
               <NavItem>
-                <NavLink href="/login">Iniciar Sesion</NavLink>
+                <NavLink className="nav-link" to="/login">
+                  Iniciar Sesion
+                </NavLink>
               </NavItem>
             )}
           </Nav>

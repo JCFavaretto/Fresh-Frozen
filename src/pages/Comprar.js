@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Redirect, Route } from "react-router-dom";
 import AuthContext from "context/AuthContext";
 import Carrito from "context/CartContext";
-import CartTable from "components/CartTable";
 import Login from "pages/Login";
-import ConfirmarDatos from "components/ConfirmarDatos";
+import CartTable from "components/CartTable";
+import FormularioEnvio from "components/FormularioEnvio";
 
 function Comprar() {
   const [{ cart, removeFromCart, totalGasto }] = useContext(Carrito);
@@ -12,23 +12,15 @@ function Comprar() {
   const [datos, setDatos] = useState({
     street: "",
     number: "",
+    floor: "",
     dept: "",
     phoneNumber: "",
   });
-  console.log(datos);
 
   const handleInput = (e) => {
     const { name, value } = e.target;
-    setDatos({ ...user, [name]: value });
+    setDatos({ ...datos, [name]: value });
   };
-
-  useEffect(() => {
-    if (user.address) {
-      const { address, phoneNumber } = user;
-      console.log(address);
-      setDatos({ ...address, phoneNumber });
-    }
-  }, [user]);
 
   return (
     <div>
@@ -41,7 +33,9 @@ function Comprar() {
         <>
           <h2 className="sub-h3 separador">Detalles de la compra</h2>
           <CartTable cart={cart} remover={removeFromCart} total={totalGasto} />
-          <ConfirmarDatos datos={datos} handleInput={handleInput} user={user} />
+
+          <h4 className="sub-h3 separador text-center">Datos de envio</h4>
+          <FormularioEnvio datos={datos} handleInput={handleInput} />
         </>
       )}
     </div>

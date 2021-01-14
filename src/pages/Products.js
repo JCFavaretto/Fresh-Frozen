@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 function Products() {
   const { cat } = useParams();
-  console.log(cat);
   return (
     <>
       {cat === "congelado" ? (

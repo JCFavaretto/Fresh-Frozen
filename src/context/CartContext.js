@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { db } from "fire.js";
 import { useLocalCart } from "hooks/useLocalCart";
+import { firebase } from "fire";
 
 const Carrito = React.createContext({});
 
@@ -76,7 +77,7 @@ export const CartProvider = ({ children }) => {
 
   function updateStock(items) {
     const itemsToUpdate = db.collection("items").where(
-      db.FieldPath.documentId(),
+      firebase.firestore.FieldPath.documentId(),
       "in",
       items.map((i) => i.id)
     );

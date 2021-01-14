@@ -4,8 +4,24 @@ body {
 
 }
 
+a {
+  color: var(--light)
+}
+
+
 a:hover {
+  color: var(--white);
   text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  color: var(--dark);
 }
 
 /* Utilities */
@@ -14,7 +30,7 @@ a:hover {
 }
 
 
-.hover-pointer {
+.hover-pointer:hover {
   cursor: pointer;
 }
 
@@ -47,6 +63,7 @@ a:hover {
 
 .jumbotron {
   padding-top: 2rem;
+  border-radius: 0%;
 }
 
 .card {
@@ -60,6 +77,13 @@ a:hover {
   z-index: 99;
 }
 
+.dropdown-toggle.nav-link {
+  color: var(--light) !important
+}
+
+.nav-link {
+  color: var(--light) !important
+}
 
 /* components/Header */
 .logo {
@@ -89,16 +113,25 @@ a:hover {
 }
 
 
+@media (min-width: 468px) {
+
+  .nav-icons {
+    position: absolute;
+    top: 0.5rem;
+    right: 4.5rem;
+  }
+}
+
 @media (min-width: 768px) {
-  .cart-icon {
-    position: fixed;
+  .nav-icons {
+    position: absolute;
     top: 0.5rem;
     right: 5.5rem;
   }
 }
 
 @media (min-width: 1199px) {
-  .cart-icon {
+  .nav-icons {
     right: 15rem;
   }
 }
@@ -106,7 +139,7 @@ a:hover {
 
 /* Layout Content */
 .content {
-  margin-top: 5rem;
+  margin-top: 2rem;
   min-height: calc(100vh - 11rem);
 }
 

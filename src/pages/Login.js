@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Container,
-  Form,
-  FormGroup,
-  Input,
-  Jumbotron,
-} from "reactstrap";
+import { Button, Container, Form, FormGroup, Input } from "reactstrap";
 import { fb, db } from "fire";
 
 import { useHistory } from "react-router-dom";
@@ -30,11 +23,23 @@ const Login = () => {
         fb.auth()
           .createUserWithEmailAndPassword(user.Email, user.pass)
           .then((cred) => {
-            db.collection("users").doc(cred.user.uid).set({
-              name: user.name,
-              Email: user.Email,
-              date: new Date(),
-            });
+            db.collection("users")
+              .doc(cred.user.uid)
+              .set({
+                name: user.name,
+                Email: user.Email,
+                date: new Date(),
+                role: "user",
+                wishlist: [],
+                orders: [],
+                phoneNumber: "",
+                address: {
+                  street: "",
+                  number: "",
+                  dept: "",
+                  floor: "",
+                },
+              });
           })
           .then(() => {
             setSuccess("Usuario Creado");

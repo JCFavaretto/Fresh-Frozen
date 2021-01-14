@@ -20,4 +20,4 @@ const db = fb.firestore();
 const auth = fb.auth();
 auth.useDeviceLanguage();
 
-export { fb, storage, db, auth };
+export { firebase, fb, storage, db, auth };

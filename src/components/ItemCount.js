@@ -4,7 +4,7 @@ import { Button, Col } from "reactstrap";
 function ItemCount({ count, setCount, max }) {
   function restar() {
     if (count > 0) {
-      setCount((count) => count - 0.5);
+      setCount((count) => count - 0.25);
     } else {
       console.log("No se puede bajar mas");
     }
@@ -13,7 +13,7 @@ function ItemCount({ count, setCount, max }) {
 
   function sumar() {
     if (count < max) {
-      setCount((count) => count + 0.5);
+      setCount((count) => count + 0.25);
     } else {
       console.log("No hay mas stock");
     }

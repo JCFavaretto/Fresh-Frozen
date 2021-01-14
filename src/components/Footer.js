@@ -58,6 +58,12 @@ const Footer = () => {
               </Col>
             </Row>
           </Col>
+          <Col>
+            <p style={{ marginTop: "1rem", fontSize: "0.6rem" }}>
+              Copyright Fresh&Frozen - {new Date().getFullYear()}. Todos los
+              derechos reservados.
+            </p>
+          </Col>
         </Row>
       </Container>
     </div>

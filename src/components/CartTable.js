@@ -16,26 +16,24 @@ function CartTable({ cart, remover, total }) {
       <tbody>
         {cart.map((item) => {
           return (
-            <>
-              <tr key={item.id}>
-                <th>{item.count}</th>
-                <th scope="row">{item.name} </th>
-                <th>${item.price * item.count} </th>
-                <th>
-                  <FontAwesomeIcon
-                    style={{
-                      color: "var(--secondary-dark)",
-                      fontSize: "1.2  rem",
-                    }}
-                    onClick={() => {
-                      remover(item.id);
-                    }}
-                    className="hover-pointer"
-                    icon={faTrashAlt}
-                  />{" "}
-                </th>
-              </tr>
-            </>
+            <tr key={item.id}>
+              <th>{item.count}</th>
+              <th scope="row">{item.name} </th>
+              <th>${item.price * item.count} </th>
+              <th>
+                <FontAwesomeIcon
+                  style={{
+                    color: "var(--secondary-dark)",
+                    fontSize: "1.2  rem",
+                  }}
+                  onClick={() => {
+                    remover(item.id);
+                  }}
+                  className="hover-pointer"
+                  icon={faTrashAlt}
+                />{" "}
+              </th>
+            </tr>
           );
         })}
 

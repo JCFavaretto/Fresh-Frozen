@@ -33,7 +33,7 @@ function ItemList({ cat }) {
           />
         </div>
       ) : (
-        <Row sm="1" md="3" lg="4">
+        <Row xs="1" sm="2" md="3" lg="4" className="align-items-center">
           {Array.isArray(productos) &&
             productos.map((item) => {
               return (

@@ -38,7 +38,7 @@ export function useGetFirestore(collection = "items", cat = "") {
       .finally(() => {
         setLoading(false);
       });
-  }, []); //eslint-disable-line
+  }, [cat]); //eslint-disable-line
 
   return { loading, productos };
 }

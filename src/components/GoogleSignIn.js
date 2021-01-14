@@ -35,6 +35,7 @@ function GoogleSignIn() {
                     street: "",
                     number: "",
                     dept: "",
+                    floor: "",
                   },
                 });
             } else {

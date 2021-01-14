@@ -16,6 +16,8 @@ import Error404 from "pages/Error404";
 import Products from "pages/Products";
 import Login from "pages/Login";
 import Comprar from "pages/Comprar";
+import Nosotros from "pages/Nosotros";
+import Orders from "pages/Orders";
 
 const routes = [
   {
@@ -66,6 +68,16 @@ const routes = [
       {
         path: "/",
         component: Home,
+        exact: true,
+      },
+      {
+        path: "/nosotros",
+        component: Nosotros,
+        exact: true,
+      },
+      {
+        path: "/compras",
+        component: Orders,
         exact: true,
       },
       {

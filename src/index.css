@@ -40,6 +40,27 @@ li {
   margin-bottom: 2rem;
 }
 
+@media (max-width: 767px) {
+  .invertir {
+    flex-direction: column-reverse;
+  }
+}
+
+.lista-ordenes ul li {
+  list-style: circle;
+  color: var(--primary)
+}
+
+.lista-ordenes ul li:nth-child(even) {
+  color: var(--secondary)
+}
+
+
+@media (min-width: 768px) {
+  .lista-ordenes {
+    margin-right: 1rem;
+  }
+}
 
 
 /* Bootstrap styles */
@@ -63,7 +84,6 @@ li {
 
 .jumbotron {
   padding-top: 2rem;
-  border-radius: 0%;
 }
 
 .card {
@@ -113,7 +133,7 @@ li {
 }
 
 
-@media (min-width: 468px) {
+@media (min-width: 550px) {
 
   .nav-icons {
     position: absolute;

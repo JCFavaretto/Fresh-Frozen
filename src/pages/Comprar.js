@@ -32,7 +32,11 @@ function Comprar() {
       ) : (
         <>
           <h2 className="sub-h3 separador">Detalles de la compra</h2>
-          <CartTable cart={cart} remover={removeFromCart} total={totalGasto} />
+          <CartTable
+            cart={cart}
+            remover={removeFromCart}
+            total={totalGasto()}
+          />
 
           <h4 className="sub-h3 separador text-center">Datos de envio</h4>
           <FormularioEnvio datos={datos} handleInput={handleInput} />

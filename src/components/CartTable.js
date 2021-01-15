@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Table } from "reactstrap";
 
-function CartTable({ cart, remover, total }) {
+function CartTable({ cart, remover = false, total }) {
   return (
     <Table hover striped style={{ backgroundColor: "var(--white)" }}>
       <thead>
@@ -20,26 +20,28 @@ function CartTable({ cart, remover, total }) {
               <th>{item.count}</th>
               <th scope="row">{item.name} </th>
               <th>${item.price * item.count} </th>
-              <th>
-                <FontAwesomeIcon
-                  style={{
-                    color: "var(--secondary-dark)",
-                    fontSize: "1.2  rem",
-                  }}
-                  onClick={() => {
-                    remover(item.id);
-                  }}
-                  className="hover-pointer"
-                  icon={faTrashAlt}
-                />{" "}
-              </th>
+              {remover && (
+                <th>
+                  <FontAwesomeIcon
+                    style={{
+                      color: "var(--secondary-dark)",
+                      fontSize: "1.2  rem",
+                    }}
+                    onClick={() => {
+                      remover(item.id);
+                    }}
+                    className="hover-pointer"
+                    icon={faTrashAlt}
+                  />{" "}
+                </th>
+              )}
             </tr>
           );
         })}
 
         <tr style={{ color: "var(--primary)" }}>
           <th scope="row">TOTAL: </th>
-          <th>${total()} </th>
+          <th>${total} </th>
         </tr>
       </tbody>
     </Table>

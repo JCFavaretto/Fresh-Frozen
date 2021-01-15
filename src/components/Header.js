@@ -25,7 +25,6 @@ import { NavLink } from "react-router-dom";
 
 const Header = () => {
   const [{ user }] = useContext(AuthContext);
-  const { uid } = user;
   const [collapsed, setCollapsed] = useState(true);
 
   const toggleNavbar = () => setCollapsed(!collapsed);
@@ -127,7 +126,7 @@ const Header = () => {
                   <DropdownItem>
                     <NavLink
                       className="nav-link"
-                      to={`/${uid}`}
+                      to="/user"
                       onClick={toggleNavbar}
                     >
                       Mis datos

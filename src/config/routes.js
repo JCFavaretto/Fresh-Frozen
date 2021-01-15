@@ -18,6 +18,7 @@ import Login from "pages/Login";
 import Comprar from "pages/Comprar";
 import Nosotros from "pages/Nosotros";
 import Orders from "pages/Orders";
+import User from "pages/User";
 
 const routes = [
   {
@@ -73,6 +74,11 @@ const routes = [
       {
         path: "/nosotros",
         component: Nosotros,
+        exact: true,
+      },
+      {
+        path: "/user",
+        component: User,
         exact: true,
       },
       {

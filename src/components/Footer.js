@@ -21,7 +21,7 @@ const Footer = () => {
             >
               <Col style={{ flexGrow: "0" }}>
                 <a
-                  href="https://www.facebook.com"
+                  href="https://www.facebook.com/freshandfrozen.pescaderia"
                   rel="noreferrer"
                   target="_blank"
                   style={{
@@ -45,7 +45,7 @@ const Footer = () => {
               </Col>
               <Col style={{ flexGrow: "0" }}>
                 <a
-                  href="https://api.whatsapp.com/send?phone=542235395340&text=Buenas! Quisiera conocer mas sobre los productos que ofreces"
+                  href="https://api.whatsapp.com/send?phone=542234220714&text=Buenas! Quisiera conocer mas sobre los productos que ofreces"
                   rel="noreferrer"
                   target="_blank"
                   style={{

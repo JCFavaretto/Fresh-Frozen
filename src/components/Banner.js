@@ -7,6 +7,7 @@ import { Col, Row, Spinner } from "reactstrap";
 function Banner() {
   const { productos, loading } = useGetFirestore("banners");
   const bannerOfi = {
+    id: "holiwis",
     path: "/nosotros",
     name: "logo",
     alt: "Fresh&Frozen",
@@ -35,7 +36,6 @@ function Banner() {
                   style={{ padding: "0" }}
                   key={page}
                   onClick={() => onClick(page)}
-                  active={isActivePage}
                 >
                   <div
                     className={

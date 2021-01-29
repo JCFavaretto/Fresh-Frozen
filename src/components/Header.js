@@ -8,7 +8,6 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
   UncontrolledDropdown,
@@ -47,9 +46,9 @@ const Header = () => {
     <Navbar style={{ position: "relative" }} color="primary" dark expand="md">
       <Container>
         <NavLink to="/">
-          <NavbarBrand className="logo mr-auto">
-            <NavLink to="/">Fresh&Frozen</NavLink>
-          </NavbarBrand>
+          <h1 stlye={{ margin: "0 auto" }} className="logo navbar-brand">
+            Fresh&Frozen
+          </h1>
         </NavLink>
         <div className="d-flex flex-end align-self-end nav-icons">
           <NavbarToggler onClick={toggleNavbar} className="mr-2" />{" "}

@@ -6,13 +6,14 @@ import { useHistory } from "react-router-dom";
 
 function GoogleSignIn() {
   const history = useHistory();
-  const provider = new firebase.auth.GoogleAuthProvider();
 
   const handleClick = () => {
+    var provider = new firebase.auth.GoogleAuthProvider();
     auth
       .signInWithPopup(provider)
       .then(function (result) {
         const user = result.user;
+        console.log(user);
         return user;
       })
       .then((user) => {
@@ -20,7 +21,7 @@ function GoogleSignIn() {
           .doc(user.uid)
           .get()
           .then((querySnapshot) => {
-            if (querySnapshot.size === 0) {
+            if (!querySnapshot.exists) {
               db.collection("users")
                 .doc(user.uid)
                 .set({
@@ -38,7 +39,6 @@ function GoogleSignIn() {
                     floor: "",
                   },
                 });
-            } else {
             }
           });
       })
